@@ -55,3 +55,14 @@ interface fa0/1
 
 interface fa0/24
  switchport mode trunk
+
+show lldp niegbourds
+
+show int gig0/1
+
+ssh -l admin ip
+
+
+
+
+
