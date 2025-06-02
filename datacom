@@ -49,6 +49,9 @@ ip dhcp pool vlan50
  default-router 10.10.50.1
  dns-server 62.36.55.85
 
+VLAN PRORITY
+spanning-tree vlan 1 priority 0
+
 TRUNK MODE
 interface fa0/1
  switchport mode trunk
