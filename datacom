@@ -1,1 +1,49 @@
+<HTML>
+<HEAD>
+</HEAD>
+<BODY>
+Dit is de website van Voornaam:
+</BODY>
+</HTML>
 
+
+Open met cat het bestand /etc/apache2/default-server.conf
+apache2ctl configtest
+ systemctl start apache2.service.
+w3m localhost (installeer w3m als deze nog niet geïnstalleerd is).
+
+ftp
+Installeer VSFTP (deze heet vsftpd).
+Start de server (systemctl start, enzovoort).
+Zet de bestanden die je wilt verspreiden in de map /srv/ftp.
+Probeer vanaf een andere computer of jouw bestanden via FTP te benaderen zijn (zet op de server de firewall uit).
+Open met Vi het bestand /etc/vsftpd.conf. Ga naar de sectie General Settings en wijzig write_enable=NO in write_enable=YES.
+
+Herstart de FTP-server om de configuratiefile opnieuw uit te lezen (systemctl restart vsftpd.service).
+Verwijder het commentaarteken voor de regels:
+chroot_local_user=YES
+chroot_list_enable=YES
+chroot_list_file=/etc/vsftpd.chroot_list
+
+
+#!/bin/bash
+
+echo "Kies een bewerking:"
+echo "1) Optellen"
+echo "2) Vermenigvuldigen"
+read keuze
+
+echo "Voer getal 1 in:"
+read getal1
+echo "Voer getal 2 in:"
+read getal2
+
+if [ "$keuze" -eq 1 ]; then
+    resultaat=$((getal1 + getal2))
+    echo "Som: $resultaat"
+elif [ "$keuze" -eq 2 ]; then
+    resultaat=$((getal1 * getal2))
+    echo "Product: $resultaat"
+else
+    echo "Ongeldige keuze."
+fi
